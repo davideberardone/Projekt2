@@ -10,13 +10,16 @@
 
 <?php
 session_start();
-$_SESSION['name'] = @$_POST['name'];
-$_SESSION['alter'] = @$_POST['alter'];
+if (empty($_SESSION['name']) == TRUE && empty($_SESSION['alter']) == TRUE)
+{
+  $_SESSION['name'] = @$_POST['name'];
+  $_SESSION['alter'] = @$_POST['alter'];
+}
 if (empty($_SESSION['name']) != TRUE && empty($_SESSION['alter']) != TRUE)
 {
   echo '<h2>';
-  echo 'Ihr Name ist ' . $_POST['name'] . ".<br>";
-  echo "Sie sind " . $_POST['alter'] . " Jahre alt.<br>";
+  echo 'Ihr Name ist ' . $_SESSION['name'] . ".<br>";
+  echo "Sie sind " . $_SESSION['alter'] . " Jahre alt.<br>";
   echo '</h2>';
 }
 else
